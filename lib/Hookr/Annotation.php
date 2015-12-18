@@ -89,10 +89,13 @@ class Hookr_Annotation {
             if (@isset($rslt->name))
                 $rslt->name = rtrim($rslt->name, ':');
 
-            if ($tag instanceof \phpDocumentor\Reflection\DocBlock\Tag\ParamTag) {
+            if ($tag instanceof \phpDocumentor\Reflection\DocBlock\Tag\SinceTag ||
+                $tag instanceof \phpDocumentor\Reflection\DocBlock\Tag\ParamTag) {
+                
                 if (!@isset($this->tags[$name]))
                     $this->tags[$name] = array();
-                $this->tags[$name][] = $rslt;
+                
+                $this->tags[$name][] = $rslt;            
             }
             else
                 $this->tags[$name] = $rslt;
@@ -166,9 +169,9 @@ class Hookr_Annotation {
         return $this->see;
     }
 
-    function get_since()
+    function get_since($first = true)
     {
-        return $this->since;
+        return true === $first ? array_shift($this->since) : $this->since;
     }
 
     function get_version()
