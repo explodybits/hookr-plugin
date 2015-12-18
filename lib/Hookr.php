@@ -1868,10 +1868,8 @@ class Hookr extends Hookr_Plugin {
      */
     function get_render($tpl, $data = array())
     {
-        ob_start();
         $tpl = HOOKR_PLUGIN_DIR . DS . 'tpl' . DS . $tpl;
-        parent::get_render($tpl, $data);
-        return ob_get_clean();
+        return parent::get_render($tpl, $data);
     }
     /**#@-*/
     
