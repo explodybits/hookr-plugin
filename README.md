@@ -1,4 +1,4 @@
-=== Hookr ===
+# Hookr
 Plugin URI: http://hookr.io/
 Description: The official Hookr plugin.
 Version: 1.0.0 (beta)
