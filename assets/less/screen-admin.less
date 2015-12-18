@@ -1,0 +1,192 @@
+@import 'screen';
+    
+.wp-admin.tools_page_hookr {
+
+    #wpcontent {
+        padding-left: 0;
+    }
+    
+    #wpbody-content {
+        
+        padding-top: 1.5em;
+                
+        > div.wrap {
+            
+            .container;
+            padding: 0;
+            
+            > form {
+                
+                margin: @gutter;
+                
+                > fieldset {
+                    
+                    border-top: 1px solid darken(@color-grey, 15%);
+                    .make-lg-column(5.75);
+                    padding: 0 !important;                    
+                    margin-top: @gutter * 5;
+                    margin-bottom: @gutter;
+                    
+                    legend {
+                        font-size: 130%;                        
+                        padding: @gutter/2 @gutter;
+                        background: #fff;
+                    }
+                    &#hookr-global{
+                        .make-sm-column(12);   
+                        margin-top: @gutter * 2;
+                    }
+
+                    &#hookr-admin {
+                        .screen-lg &:last-of-type {
+                            float: right;
+                            input[type=submit] {
+                                display: none;
+                            }                            
+                        }
+                    }
+                                                                                
+                    > ul {
+                        margin: @gutter;
+                    }
+                }
+                
+                hr {
+                    display: block !important;
+                    .clearfix();
+                }
+            }
+        }
+        
+        header {
+            
+            margin: 1em @gutter;
+            
+            h1 {
+                .lead();
+
+                padding: 0;
+                margin: 0;
+                position: relative;
+                line-height: normal;
+                min-height: 0;
+
+                img {
+                    max-width: 7em;
+                }
+
+                small {
+                    position: relative;                
+                    left: .5em;
+                    top: -.75em;
+                    font-size: 85%;
+                    font-weight: 200;
+                    letter-spacing: -1px;
+                }
+            }
+        }
+                
+        table.form-table {
+            
+            margin: 1em;
+            
+            td {
+                textarea {
+                    display: block;
+                    width: 100%;                    
+                }
+            }
+            
+            th,td {
+                small {
+                    font-style: italic;
+                    font-weight: normal;
+                    color: lighten(#82878c, 10%);
+                    code {
+                        font-style: normal;
+                    }
+                }                
+            }
+        }
+                
+        input[type=submit] {
+            .clearfix();
+        }
+        
+        input[type=radio],
+        input[type=checkbox] {
+            
+            position: absolute;
+            left: -999em;
+            
+            + label {
+                padding: 0 .65em;
+                .fa-square;
+                &:before {
+                    position: relative;
+                    left: -.50em;
+                    font-size: 125% !important;
+                    color: darken(@color-grey, 70%);
+                }        
+            }
+                        
+            &:checked {
+                + label {
+                    .fa-check-square;
+                    &:before {
+                        .transition(color .05s linear);
+                    }
+                }
+            }
+        }
+        
+        input[type=radio] {
+            
+            + label {
+                .fa-circle-o;
+            }
+            
+            &:checked {                
+                + label {
+                    .fa-dot-circle-o;    
+                }
+            }
+            
+            &#hookr-enabled-1:checked {
+                & + label {
+                    &:before {
+                        color: darken(@color-green, 5%);
+                    }
+                }
+            }
+            
+            &#hookr-enabled-0:checked {
+                & + label {
+                    &:before {
+                        color: @color-red;
+                    }
+                }
+            }            
+        }
+        
+        input[type=checkbox] {
+            &:checked {
+                + label {
+                    &:before {
+                        color: saturate(@color-blue, 20%);
+                    }
+                }
+            }
+        }
+        
+        .disabled {
+            label {
+                .fa-times !important; 
+                cursor: default;
+                &:before {
+                    color: @color-red !important;
+                }                
+            }
+        }
+    }    
+}
