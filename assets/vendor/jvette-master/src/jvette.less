@@ -1,0 +1,130 @@
+@jv-bg-color: #333;
+
+html,
+body {
+    min-height: 100%;
+    height: 100%;
+}
+
+html body#jvette {
+    
+    z-index: 0;
+    display: none;
+    width: 100%;
+    background: @jv-bg-color !important;
+    
+    > div {
+        width: 75%;
+        min-width: 300px;
+        margin: 0;
+        padding: 1em;
+        color: #fff;
+        background: @jv-bg-color;   
+    }
+}
+
+html.jv-open,
+html.jv-opened {
+
+    -webkit-overflow-scrolling: touch;
+        
+    head:first-child + body {
+        
+        position: fixed;
+        width: 100%;
+        height: 999em;
+        z-index: 999;
+        overflow: hidden;
+        
+        -webkit-transform: translate3d(0,0,0);
+           -moz-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);        
+        
+        -webkit-transform: translateZ(0);      
+           -moz-transform: translateZ(0);
+                transform: translateZ(0);        
+                
+        -webkit-perspective: 1000;
+        
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;        
+        
+        -webkit-transform: translate3d(0,0,0);
+           -moz-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);        
+                
+        -webkit-transform: translateZ(9999);      
+           -moz-transform: translateZ(9999);
+                transform: translateZ(9999);        
+                
+        -webkit-transform: scale(1);
+           -moz-transform: scale(1);
+                transform: scale(1);
+               
+        -webkit-box-shadow: 0px 0px 6px 0 fade(#333, 50%);
+           -moz-box-shadow: 0px 0px 6px 0 fade(#333, 50%);
+                box-shadow: 0px 0px 6px 0 fade(#333, 50%);
+                
+        .jv-holder, 
+        [data-jv-panel],
+        [data-jv-content],
+        [data-jv-holder] {
+            display: none;
+        }        
+    }    
+    
+    & body#jvette {
+        
+        position: static;
+        z-index: 1;
+        display: block;   
+        overflow: hidden;
+        
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;        
+                        
+        .jv-content {
+            display: block;
+        }
+        
+        .jv-panel {
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            padding-bottom: 10em;      
+            display: none;
+            -webkit-overflow-scrolling: touch;               
+        }
+    }
+    
+    &.jv-open-left,
+    &.jv-opened-left {
+        body#jvette > .jv-panel:first-child {
+            display: block !important;
+            text-align: left;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            + .jv-panel {
+                display: none !important;
+            }
+        }
+    }
+    
+    &.jv-open-right,
+    &.jv-opened-right {
+        body#jvette > .jv-panel {
+            display: none !important;
+            + .jv-panel {
+                display: block !important;
+                text-align: left;
+                top: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+}
